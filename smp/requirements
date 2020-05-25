@@ -1,0 +1,5 @@
+flask>=1.0
+flask-wtf>=0.14
+WTForms>=2.3
+typing
+pytest>=5.4.1
