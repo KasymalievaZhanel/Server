@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template
-from server import Ciphers, Form_python
+import Ciphers, Form_python
 
 NUMBER_OF_DECRYPTIONS = 26
 
