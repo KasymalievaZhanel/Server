@@ -1,6 +1,17 @@
 import pytest
+import socket as s
 
-@pytest.mark.asyncio
-async def test_invalid_going(cli):
-    resp = await cli.get('/ciphers')
-    assert resp.status == 405
+
+@pytest.fixture
+def socket(request):
+    _socket = s.socket(s.AF_INET, s.SOCK_STREAM)
+    def socket_teardown():
+        _socket.close()
+    request.addfinalizer(socket_teardown)
+    return _socket
+
+
+def test_server_connect(socket):
+    socket.connect(('localhost', 5000))
+    assert socket
+
